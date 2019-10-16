@@ -21,26 +21,6 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 
-    void initMeteors();
-    void initPlayer();
-
-    virtual void update(float delta);
-    virtual void addChild(cocos2d::Node* node);
-    virtual void removeChild(cocos2d::Node* node,bool cleanup);
-
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode key,cocos2d::Event* event);
-    void onKeyReleased(cocos2d::EventKeyboard::KeyCode key,cocos2d::Event* event);
-
-    void handleInput(float delta);
-private:
-    Player* player;
-
-    KeyManager keyManager;
-
-    MeteorManager meteorManager;
-    CollisionManager collisionManager;
-
-    cocos2d::Size visibleSize;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

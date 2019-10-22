@@ -18,6 +18,8 @@ bool Player::init() {
 }
 
 void Player::update(float delta) {
+    if(getPositionY() <= 0.1*cocos2d::Director::getInstance()->getVisibleSize().height) return;
+
     verticalSpeed -= GRAVITY_ACCELERATION * delta;
     torqueSpeed   -= TORQUE_ACCELERATION * delta;
 
@@ -34,9 +36,21 @@ void Player::update(float delta) {
 }
 
 void Player::force() {
-    verticalSpeed = std::max(0.0f,verticalSpeed);
-    verticalSpeed += 0.75f*GRAVITY_ACCELERATION;
+    if(isAlive()) {
+        verticalSpeed = std::max(0.0f,verticalSpeed);
+        verticalSpeed += 0.50f*GRAVITY_ACCELERATION;
 
-    torqueSpeed = std::max(0.0f, torqueSpeed);
-    torqueSpeed += 450.0f;
+        torqueSpeed = std::max(0.0f, torqueSpeed);
+        torqueSpeed += 450.0f;
+    }
+}
+
+cocos2d::Rect Player::getBoundingBox() const {
+    cocos2d::Rect bbox = cocos2d::Sprite::getBoundingBox();
+    bbox.setRect(bbox.getMinX()+10,bbox.getMinY()+10,bbox.size.width-10,bbox.size.height-10);
+    return bbox;
+}
+
+void Player::onCollision(cocos2d::Sprite* sprite) {
+    alive = false;
 }

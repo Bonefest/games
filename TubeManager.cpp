@@ -33,8 +33,8 @@ void TubeManager::update(float delta) {
 
 bool TubeManager::areTubesCollideWithSprite(cocos2d::Sprite* sprite) {
     for(auto tubeIter = tubes.begin();tubeIter != tubes.end();tubeIter++) {
-        if(sprite->getBoundingBox().containsPoint(tubeIter->first->getBoundingBox()) ||
-           sprite->getBoundingBox().containsPoint(tubeIter->second->getBoundingBox())) return true;
+        if(sprite->getBoundingBox().intersectsRect(tubeIter->first->getBoundingBox()) ||
+           sprite->getBoundingBox().intersectsRect(tubeIter->second->getBoundingBox())) return true;
     }
     return false;
 }

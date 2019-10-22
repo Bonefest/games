@@ -17,6 +17,9 @@ bool MainScene::init() {
     this->runAction(cocos2d::RepeatForever::create(cocos2d::Sequence::create(cocos2d::CallFunc::create(CC_CALLBACK_0(TubeManager::generateTubePair, &tubeManager)),
                                                                              cocos2d::DelayTime::create(2.0f), nullptr )));
 
+    dnode = cocos2d::DrawNode::create();
+    addChild(dnode);
+
     initEventListeners();
     initGameObjects();
 
@@ -65,9 +68,28 @@ void MainScene::initGameObjects() {
 }
 
 void MainScene::update(float delta) {
-    tubeManager.update(delta);
-    updateGround(delta);
+    dnode->clear();
 
+    const Vector<cocos2d::Node*>& childrens = getChildren();
+    for(auto child: childrens) {
+        auto rect = child->getBoundingBox();
+        dnode->drawRect(cocos2d::Vec2(rect.getMinX(),rect.getMinY()),cocos2d::Vec2(rect.getMaxX(),rect.getMaxY()),cocos2d::Color4F::RED);
+
+    }
+
+    if(player->isAlive()) {
+        tubeManager.update(delta);
+        updateGround(delta);
+    }
+    if(tubeManager.areTubesCollideWithSprite(player)) {
+        player->onCollision(player);
+    }
+
+    for(int i = 0;i<2;++i) {
+        if(player->getBoundingBox().intersectsRect(groundSprites[0]->getBoundingBox())) {
+            player->setVerticalSpeed(10.0f);
+        }
+    }
 }
 
 void MainScene::updateGround(float delta) {

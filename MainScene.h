@@ -25,6 +25,8 @@ public:
 
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 private:
+    cocos2d::DrawNode* dnode;
+
     TubeManager tubeManager;
 
     cocos2d::Sprite* groundSprites[2];

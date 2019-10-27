@@ -2,11 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "KeyManager.h"
-#include <map>
-#include "Pawn.h"
-#include "ObjectManager.h"
-#include "conf.h"
+#include "PhysicsComponent.h"
 
 
 class HelloWorld : public cocos2d::Scene {
@@ -20,6 +16,7 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
 
 };
 

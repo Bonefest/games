@@ -2,6 +2,8 @@
 
 #include "SlingshotScene.h"
 #include "ParticleScene.h"
+#include "DiamondSquareScene.h"
+#include "OrbitalScene.h"
 
 MainScene* MainScene::createScene() {
     return create();
@@ -24,6 +26,8 @@ void MainScene::initMenu() {
     menu = cocos2d::Menu::create();
     addScene("Slingshot", SlingshotScene::createScene, 1);
     addScene("Particles", ParticleScene::createScene, 2);
+    addScene("Diamond Square", DiamondSquareScene::createScene, 3);
+    addScene("Oribtals", OrbitalScene::createScene, 4);
 
     menu->alignItemsVertically();
     addChild(menu);

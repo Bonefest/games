@@ -3,9 +3,10 @@
 
 #include "TestScene.h"
 #include "../cocoslib/KeyManager.h"
+#include "../cocoslib/DiamondSquare.h"
 
 //need a slider!
-const uint32_t PARTICLE_AMOUNT = 20;
+const uint32_t PARTICLE_AMOUNT = 40;
 const double MAXIMAL_RADIUS = 40.0;
 
 class ParticleScene : public TestScene {

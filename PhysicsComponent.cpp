@@ -15,6 +15,9 @@ bool PhysicsComponent::init() {
     velocity = cocos2d::Vec2::ZERO;
     acceleration = cocos2d::Vec2::ZERO;
 
+    mass = 0.0f;
+    momentInertia = 0.0f;
+
     return true;
 }
 
@@ -31,6 +34,14 @@ void PhysicsComponent::update(float delta) {
     getOwner()->setPosition(ownerPosition);
 }
 
+void PhysicsComponent::setGravityEnabled(bool enabled) {
+    gravityEnabled = enabled;
+}
+
 void PhysicsComponent::setVelocity(const cocos2d::Vec2& velocity) {
     this->velocity = velocity;
+}
+
+void PhysicsComponent::setMass(float mass) {
+    this->mass = mass;
 }

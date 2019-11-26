@@ -1,28 +1,45 @@
-#ifndef _MAINSCENE_H_
-#define _MAINSCENE_H_
+#ifndef MAINSCENE_H_INCLUDED
+#define MAINSCENE_H_INCLUDED
+
+#include <vector>
 
 #include "cocos2d.h"
+#include "View.h"
+#include "Entity.h"
+#include "InputHandler.h"
 #include "../cocoslib/KeyManager.h"
-#include "TestScene.h"
 
-USING_NS_CC;
+const int MAX_PLAYERS = 4;
 
-typedef TestScene*(*createSceneCallback)();
-
-class MainScene : public TestScene {
+class MainScene: public cocos2d::Scene {
 public:
     CREATE_FUNC(MainScene);
     static MainScene* createScene();
     bool init();
-    void initMenu();
+
+    void update(float delta);
 
 private:
-    void addScene(const std::string& sceneName, std::function<TestScene*()> createFunc, unsigned int order);
+    void initListeners();
+    void initMap();
+    void initPlayers();
+    void initCommands();
+
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode key, cocos2d::Event* event);
+    void onKeyReleased(cocos2d::EventKeyboard::KeyCode key, cocos2d::Event* event);
+
+    //CONTROLLER
+    void removePlayer(Player* player);
+
+    View* view;
+
+    std::vector<Player*> players;
+    shared_ptr<Map> gameMap;
 
     cocos2d::Size visibleSize;
-    cocos2d::Menu* menu;
 
-    std::map<std::string,std::function<TestScene*()>> callbacks;
+    KeyManager keyManager;
+    InputHandler inputHandler;
 };
 
-#endif // _MAINSCENE_H_
+#endif // MAINSCENE_H_INCLUDED

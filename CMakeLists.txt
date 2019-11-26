@@ -50,19 +50,21 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/MainScene.cpp
-     Classes/PhysicsComponent.cpp
-     Classes/SlingshotScene.cpp
-     Classes/ParticleScene.cpp
-     Classes/TestScene.cpp
+     Classes/View.cpp
+     Classes/Map.cpp
+     Classes/Entity.cpp
+     Classes/Command.cpp
+     Classes/InputHandler.cpp
      cocoslib/KeyManager.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/MainScene.h
-     Classes/PhysicsComponent.h
-     Classes/SlingshotScene.h
-     Classes/ParticleScene.h
-     Classes/TestScene.h
+     Classes/View.h
+     Classes/Map.h
+     Classes/Entity.h
+     Classes/Command.h
+     Classes/InputHandler.h
      cocoslib/KeyManager.h
      )
 

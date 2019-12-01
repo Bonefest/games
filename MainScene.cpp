@@ -4,6 +4,7 @@
 #include "ParticleScene.h"
 #include "DiamondSquareScene.h"
 #include "OrbitalScene.h"
+#include "KineticsDrag.h"
 
 MainScene* MainScene::createScene() {
     return create();
@@ -28,6 +29,7 @@ void MainScene::initMenu() {
     addScene("Particles", ParticleScene::createScene, 2);
     addScene("Diamond Square", DiamondSquareScene::createScene, 3);
     addScene("Oribtals", OrbitalScene::createScene, 4);
+    addScene("Kinetics Drags", KineticsDragScene::createScene, 5);
 
     menu->alignItemsVertically();
     addChild(menu);

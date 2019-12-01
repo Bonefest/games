@@ -52,9 +52,13 @@ list(APPEND GAME_SOURCE
      Classes/MainScene.cpp
      Classes/PhysicsComponent.cpp
      Classes/SlingshotScene.cpp
+     Classes/OrbitalScene.cpp
+     Classes/DiamondSquareScene.cpp
      Classes/ParticleScene.cpp
      Classes/TestScene.cpp
+     Classes/KineticsDrag.cpp
      cocoslib/KeyManager.cpp
+     cocoslib/DiamondSquare.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -62,8 +66,12 @@ list(APPEND GAME_HEADER
      Classes/PhysicsComponent.h
      Classes/SlingshotScene.h
      Classes/ParticleScene.h
+     Classes/DiamondSquareScene.h
+     Classes/OrbitalScene.h
      Classes/TestScene.h
+     Classes/KineticsDrag.h
      cocoslib/KeyManager.h
+     cocoslib/DiamondSquare.h
      )
 
 if(ANDROID)

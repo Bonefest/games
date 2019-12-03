@@ -49,29 +49,22 @@ endif()
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
-     Classes/MainScene.cpp
-     Classes/PhysicsComponent.cpp
-     Classes/SlingshotScene.cpp
-     Classes/OrbitalScene.cpp
-     Classes/DiamondSquareScene.cpp
-     Classes/ParticleScene.cpp
-     Classes/TestScene.cpp
-     Classes/KineticsDrag.cpp
+     Classes/GameScene.cpp
+     Classes/InputHandler.cpp
+     Classes/GameConfiguration.cpp
+     Classes/State.h
+     Classes/Entity.h
      cocoslib/KeyManager.cpp
-     cocoslib/DiamondSquare.cpp
+     cocoslib/json.hpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
-     Classes/MainScene.h
-     Classes/PhysicsComponent.h
-     Classes/SlingshotScene.h
-     Classes/ParticleScene.h
-     Classes/DiamondSquareScene.h
-     Classes/OrbitalScene.h
-     Classes/TestScene.h
-     Classes/KineticsDrag.h
+     Classes/GameScene.h
+     Classes/InputHandler.h
+     Classes/GameConfiguration.h
+     Classes/State.h
+     Classes/Entity.h
      cocoslib/KeyManager.h
-     cocoslib/DiamondSquare.h
      )
 
 if(ANDROID)

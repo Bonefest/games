@@ -2,12 +2,37 @@
 #include <fstream>
 #include <string>
 
+
+EventKeyboard::KeyCode GameConfiguration::MOVE_LEFT;
+EventKeyboard::KeyCode GameConfiguration::MOVE_UP;
+EventKeyboard::KeyCode GameConfiguration::MOVE_RIGHT;
+EventKeyboard::KeyCode GameConfiguration::MOVE_DOWN;
+EventKeyboard::KeyCode GameConfiguration::ACTIVATE_SKILL_1;
+EventKeyboard::KeyCode GameConfiguration::ACTIVATE_SKILL_2;
+EventKeyboard::KeyCode GameConfiguration::ACTIVATE_SKILL_3;
+EventKeyboard::KeyCode GameConfiguration::USE;
+
+cocos2d::Animation* GameConfiguration::animationHumanUp;
+cocos2d::Animation* GameConfiguration::animationHumanDown;
+cocos2d::Animation* GameConfiguration::animationHumanLeft;
+cocos2d::Animation* GameConfiguration::animationHumanRight;
+
+int GameConfiguration::MAX_STATE_QUEUE_SIZE = 10;
+
+
 void GameConfiguration::loadGameConfiguration(const char* fileName) {
     nlohmann::json parser;
     std::ifstream settingsFile(fileName);
     if(settingsFile.is_open()) {
         settingsFile >> parser;
-        loadKeys(parser);
+        loadKeys(parser);//    animationHumanUp = cocos2d::Animation::create();
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("01.png"));
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("02.png"));
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("03.png"));
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("04.png"));
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("05.png"));
+//    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("00.png"));
+
         loadAnimations(parser);
     }
 }
@@ -28,13 +53,18 @@ void GameConfiguration::loadKeys(nlohmann::json& parser) {
 
 void GameConfiguration::loadAnimations(nlohmann::json& parser) {
     cocos2d::SpriteFrameCache* cache = cocos2d::SpriteFrameCache::getInstance();
-    std::string humanAnimation = parser["humanAnimation"];
+    std::string humanAnimation = parser["animations"]["human"];
 
-    cache->addSpriteFramesWithFile(humanAnimation);
+    cache->addSpriteFramesWithFile("human.plist");
     animationHumanUp = cocos2d::Animation::create();
-    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("human_up_1"));
-    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("human_up_2"));
-    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("human_up_3"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("01.png"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("02.png"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("03.png"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("04.png"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("05.png"));
+    animationHumanUp->addSpriteFrame(cache->getSpriteFrameByName("00.png"));
+    animationHumanUp->setDelayPerUnit(0.15f);
+    animationHumanUp->setLoops(-1);
 }
 
 /*

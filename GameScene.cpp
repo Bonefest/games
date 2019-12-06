@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "GameConfiguration.h"
+#include "Entity.h"
 
 GameScene* GameScene::createScene() {
     return GameScene::create();
@@ -14,6 +15,12 @@ bool GameScene::init() {
     GameConfiguration::loadGameConfiguration("settings.json");
 
     initListeners();
+    Entity* entity = Entity::createEntity();
+    entity->setAnimation(UP, GameConfiguration::animationHumanUp);
+    entity->setPosition(cocos2d::Vec2(300,300));
+    entity->runAnimation(UP);
+
+    addChild(entity);
 
     log("[Success] Game scene has been initialized!");
     return true;

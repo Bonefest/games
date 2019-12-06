@@ -24,11 +24,14 @@ public:
     static cocos2d::Animation* animationHumanLeft;
     static cocos2d::Animation* animationHumanRight;
 
+    //TODO авто-генерацию анимаций на основе .json
+
+    static int MAX_STATE_QUEUE_SIZE;
+
 private:
     static void loadKeys(nlohmann::json& parser);
     static void loadAnimations(nlohmann::json& parser);
 
 };
-
 
 #endif // GAMECONFIGURATION_H_INCLUDED

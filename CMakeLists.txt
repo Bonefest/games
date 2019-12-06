@@ -49,21 +49,13 @@ endif()
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
-     Classes/GameScene.cpp
-     Classes/InputHandler.cpp
-     Classes/GameConfiguration.cpp
-     Classes/State.h
-     Classes/Entity.h
+     Classes/MainScene.cpp
      cocoslib/KeyManager.cpp
      cocoslib/json.hpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
-     Classes/GameScene.h
-     Classes/InputHandler.h
-     Classes/GameConfiguration.h
-     Classes/State.h
-     Classes/Entity.h
+     Classes/MainScene.h
      cocoslib/KeyManager.h
      )
 

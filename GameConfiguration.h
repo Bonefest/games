@@ -6,6 +6,10 @@
 
 USING_NS_CC;
 
+enum TAGS {
+    CURRENT_ANIMATION_TAG
+};
+
 class GameConfiguration {
 public:
     static void loadGameConfiguration(const char* fileName);
@@ -31,7 +35,9 @@ public:
 private:
     static void loadKeys(nlohmann::json& parser);
     static void loadAnimations(nlohmann::json& parser);
+    static cocos2d::Animation* loadAnimation(nlohmann::json& parser,const std::vector<std::string>& frames, const std::string& animationName);
 
+    static cocos2d::SpriteFrameCache* cache;
 };
 
 #endif // GAMECONFIGURATION_H_INCLUDED

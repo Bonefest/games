@@ -1,5 +1,7 @@
 #include "GameScene.h"
 #include "GameConfiguration.h"
+#include "Game.h"
+#include "State.h"
 #include "Entity.h"
 
 GameScene* GameScene::createScene() {
@@ -17,11 +19,17 @@ bool GameScene::init() {
     initListeners();
     Entity* entity = Entity::createEntity();
     entity->setAnimation(UP, GameConfiguration::animationHumanUp);
+    entity->setAnimation(DOWN, GameConfiguration::animationHumanDown);
+    entity->setAnimation(LEFT, GameConfiguration::animationHumanLeft);
+    entity->setAnimation(RIGHT, GameConfiguration::animationHumanRight);
+
     entity->setPosition(cocos2d::Vec2(300,300));
-    entity->runAnimation(UP);
+    entity->addNewState(std::make_shared<StandingState>());
+    Game::getInstance()->setPlayer(entity);
 
     addChild(entity);
 
+    scheduleUpdate();
     log("[Success] Game scene has been initialized!");
     return true;
 }
@@ -44,4 +52,8 @@ void GameScene::onKeyPressed(EventKeyboard::KeyCode key, Event* event) {
 
 void GameScene::onKeyReleased(EventKeyboard::KeyCode key, Event* event) {
     inputHandler.onKeyReleased(key);
+}
+
+void GameScene::update(float delta) {
+    Game::getInstance()->getPlayer()->update(delta);
 }

@@ -16,6 +16,7 @@ public:
     void onKeyPressed(EventKeyboard::KeyCode key, Event* event);
     void onKeyReleased(EventKeyboard::KeyCode key, Event* event);
 
+    void update(float delta);
 private:
     InputHandler inputHandler;
 };

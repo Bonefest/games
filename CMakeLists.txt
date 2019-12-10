@@ -52,8 +52,9 @@ list(APPEND GAME_SOURCE
      Classes/GameScene.cpp
      Classes/InputHandler.cpp
      Classes/GameConfiguration.cpp
-     Classes/State.h
-     Classes/Entity.h
+     Classes/State.cpp
+     Classes/Entity.cpp
+     Classes/Game.cpp
      cocoslib/KeyManager.cpp
      cocoslib/json.hpp
      )
@@ -64,6 +65,7 @@ list(APPEND GAME_HEADER
      Classes/GameConfiguration.h
      Classes/State.h
      Classes/Entity.h
+     Classes/Game.h
      cocoslib/KeyManager.h
      )
 
